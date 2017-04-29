@@ -1,0 +1,1 @@
+L:\Android\SDKLOCATION\platform-tools\adb shell am start -n io.appium.unlock/.Unlock && sleep 5
