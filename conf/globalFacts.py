@@ -1,7 +1,12 @@
 #coding=utf-8
 import os
 import logging.config
-logging.config.fileConfig(r"L:\appAutoScripts\conf\logging.conf")
+
+###you need configre this path to your real project path
+projectPath = r"D:\projects\github\appAutoScripts"
+
+
+logging.config.fileConfig(os.path.join(projectPath,"conf","logging.conf"))
 loggerInner = logging.getLogger("logger_root")
 os.name
 
@@ -9,7 +14,7 @@ XMAX = 1280
 YMAX = 720
 TANSUOCOLOR = [61, 36, 19, 255]
 RONG_CHA = 5
-confPath = r"L:\appAutoScripts\conf"
+confPath = os.path.join(projectPath,"conf")
 
 defaultSSPath = "screenshot.png"
 tanSuoPath = "prePic/tanSuoRuKou.png"
