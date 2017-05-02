@@ -12,8 +12,7 @@ os.name
 
 XMAX = 1280
 YMAX = 720
-TANSUOCOLOR = [61, 36, 19, 255]
-RONG_CHA = 5
+
 confPath = os.path.join(projectPath,"conf")
 
 defaultSSPath = "screenshot.png"
