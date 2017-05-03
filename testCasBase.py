@@ -351,7 +351,7 @@ class ContactsAndroidTests(unittest.TestCase):
 
 
         loggerInner.info("------enter fight level  at {x},{y} ".format(x=XMAX*9/10,y=YMAX/2))
-        self.driver.tap([(XMAX*9/10,YMAX/2)])
+        self.driver.tap([(XMAX*9/10,int(YMAX/4))])
         sleep(6)
         #点击探索button，进入选择小怪页面
         loggerInner.info("------click level fight entry button at {x},{y} ".format(x=int(XMAX*3/4),y=int(YMAX*7/10)))
