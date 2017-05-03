@@ -3,7 +3,8 @@ import os
 import logging.config
 
 ###you need configre this path to your real project path
-projectPath = r"D:\projects\github\appAutoScripts"
+projectPath = os.path.join(os.path.split(os.path.realpath(__file__))[0],os.path.pardir)
+
 
 
 logging.config.fileConfig(os.path.join(projectPath,"conf","logging.conf"))
