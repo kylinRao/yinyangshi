@@ -474,9 +474,10 @@ class ContactsAndroidTests(unittest.TestCase):
                     self.driver.tap([(XMAX/2,YMAX/2)])
                 #探测到探索关卡选择页面，我们先找到需要打的关卡，进入后，点击开始探索按钮即可
 
-                x,y = get_x_y(defaultSSPath,level)
-                loggerInner.info("------get fight level at {x},{y}".format(x=x,y=y))
-                self.driver.tap([(x,y)])
+
+
+                loggerInner.info("------enter fight level  at {x},{y} ".format(x=XMAX*9/10,y=YMAX/2))
+                self.driver.tap([(XMAX*9/10,int(YMAX/4))])
                 sleep(5)
                 self.driver.tap([(int(XMAX*3/4),int(YMAX*7/10))])
                 sleep(3)
