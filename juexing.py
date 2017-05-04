@@ -14,7 +14,7 @@ class juexingTests(ContactsAndroidTests):
         loggerInner.info("------click search button in tingyuan at {x},{y}".format(x=int(XMAX*53/100),y=int(YMAX/5)))
         self.driver.tap([(int(XMAX*53/100),int(YMAX/5))])
         sleep(5)
-        self.jue_xing(type='lei',count=10)
+        self.jue_xing(type='lei',count=3)
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(juexingTests)
     unittest.TextTestRunner(verbosity=2).run(suite)
