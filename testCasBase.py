@@ -349,6 +349,13 @@ class ContactsAndroidTests(unittest.TestCase):
         #每一个count给15min，就是900s
         presettime = 900*count
 
+        #每次都需要滑动个屏幕一次，翻页到上一页的副本去挑战（这样做的好处是，可以多带几个狗粮，不用担心通关失败的问题）
+        args = {'start_x':int(XMAX*9/10), 'start_y':int(YMAX/4), 'end_x':int(XMAX*9/10), 'end_y':int(YMAX*85/100), 'duration':5000}
+        loggerInner.info("-----swipe")
+        self.driver.swipe(**args)
+
+
+
 
         loggerInner.info("------enter fight level  at {x},{y} ".format(x=XMAX*9/10,y=YMAX/2))
         self.driver.tap([(XMAX*9/10,int(YMAX/4))])
@@ -473,15 +480,20 @@ class ContactsAndroidTests(unittest.TestCase):
                     sleep(3)
                     self.driver.tap([(XMAX/2,YMAX/2)])
                 #探测到探索关卡选择页面，我们先找到需要打的关卡，进入后，点击开始探索按钮即可
+                #每次都需要滑动个屏幕一次，翻页到上一页的副本去挑战（这样做的好处是，可以多带几个狗粮，不用担心通关失败的问题）
+                loggerInner.info("-----swipe")
+                self.driver.swipe(**args)
 
 
 
-                loggerInner.info("------enter fight level  at {x},{y} ".format(x=XMAX*9/10,y=YMAX/2))
+                loggerInner.info("------in while ,enter fight level  at {x},{y} ".format(x=XMAX*9/10,y=YMAX/2))
                 self.driver.tap([(XMAX*9/10,int(YMAX/4))])
                 sleep(5)
                 self.driver.tap([(int(XMAX*3/4),int(YMAX*7/10))])
                 sleep(3)
                 count = count - 1
+                loggerInner.info("-----count is ".format(count=count))
+
 
 
     #友情点获取
