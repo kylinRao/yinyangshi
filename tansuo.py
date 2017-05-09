@@ -13,7 +13,7 @@ class juexingTests(ContactsAndroidTests):
         try:
             if sys.argv[1]:
 
-                count = sys.argv[1]
+                count = int(sys.argv[1])
                 print "count is {count}".format(count=count)
         except:
                 pass
