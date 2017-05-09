@@ -63,7 +63,7 @@ def start2TingYuan(driver):
     time.sleep(25)
     driver.tap([(XMAX/2,YMAX*3/4)])
 
-    #到此位置按常理我们就到了庭院了，但是有时候我们会被弹出来的公告打搅，因为我们需要判断是否存在公告，存在的话我们需要关闭它，然后切回到庭院的主视图
+    #到此位置按常理我们就到了庭院了，但是有时候我们会被弹出来的公告打搅，因此我们需要判断是否存在公告，存在的话我们需要关闭它，然后切回到庭院的主视图
     time.sleep(6)
 
     try:
@@ -82,17 +82,25 @@ def start2TingYuan(driver):
 
 
 
-    except:
-        loggerInner.debug("------check notice error!!")
-        time.sleep(25)
-        driver.get_screenshot_as_file(defaultSSPath)
 
-        x,y = get_x_y(defaultSSPath,noticeCloseButton,0.1)
-        if x != "nox":
-            driver.tap([(x,y)])
-            loggerInner.info("------there is a notice ,and we click {x},{y} to close the notice !".format(x=XMAX*95/100,y=YMAX/2))
-            driver.tap([(int(XMAX*95/100),int(YMAX/2))])
+
+
+    except:
+        pass
+        # loggerInner.debug("------check notice error!!")
+        # time.sleep(20)
+        # driver.get_screenshot_as_file(defaultSSPath)
+        #
+        # x,y = get_x_y(defaultSSPath,noticeCloseButton,0.1)
+        # if x != "nox":
+        #     driver.tap([(x,y)])
+        #     loggerInner.info("------there is a notice ,and we click {x},{y} to close the notice !".format(x=XMAX*95/100,y=YMAX/2))
+        #     driver.tap([(int(XMAX*95/100),int(YMAX/2))])
     loggerInner.info("------sleep 10s and we entered tingyuan and click search entry!!----")
+
+
+
+
     time.sleep(10)
 
 
