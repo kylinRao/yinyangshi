@@ -19,6 +19,11 @@ PATH = lambda p: os.path.abspath(
 )
 
 class ContactsAndroidTests(unittest.TestCase):
+    screenshotParDir = ''.join(map(lambda xx:(hex(ord(xx))[2:]),os.urandom(16)))
+    screenshotDir = os.path.join(os.path.dirname(__file__),"temScreenPic" ,screenshotParDir+".jpg")
+
+
+
     def add_10_food(self):
         #点击卷轴
         loggerInner.info("----open the rolled book!!")
@@ -40,13 +45,13 @@ class ContactsAndroidTests(unittest.TestCase):
             count  = count + 1
             loggerInner.info("-----this is the {count} time to find food pic".format(count=count))
             self.shot_screen()
-            x,y = get_x_y(defaultSSPath,food)
+            x,y = get_x_y(self.screenshotDir,food)
             if count == 30:
                 break
         self.driver.tap([(x,y)])
         sleep(3)
         self.shot_screen()
-        x,y = get_x_y(defaultSSPath,buji)
+        x,y = get_x_y(self.screenshotDir,buji)
         self.driver.tap([(x,y)])
         sleep(5)
         loggerInner.info("----get 10 succi successfully!!!")
@@ -75,10 +80,11 @@ class ContactsAndroidTests(unittest.TestCase):
             sleep(5)
             #点击攻击按钮
             self.shot_screen()
-            x,y = get_x_y(defaultSSPath,attackButton)
+            x,y = get_x_y(self.screenshotDir,attackButton)
             if x != "nox":
                 loggerInner.info("------find attackButton,at {x},{y}".format(x=x,y=y))
                 self.driver.tap([(x,y)])
+                count = count - 1
             sleep(20)
             #点击开始战斗
             loggerInner.info("------now count={count}，click fight begin button  at {x},{y}!! ".format(count=count,x=int(XMAX*9/10),y=int(YMAX*8/10)))
@@ -94,7 +100,7 @@ class ContactsAndroidTests(unittest.TestCase):
                 {"sence": SenceVictoryDaMo, "path": SenceFlagVictoryDaMo},
 
             ]
-            sence = get_sence(defaultSSPath,sences=sences)
+            sence = get_sence(self.screenshotDir,sences=sences)
             if sence == SenceTanSuoFuBenFighting:
                 #探测到当前在战斗画面，则每隔3s点击下中间屏幕即可
                 sleep(3)
@@ -118,7 +124,7 @@ class ContactsAndroidTests(unittest.TestCase):
                 self.driver.tap([(XMAX/2,YMAX/2)])
                 sleep(5)
                 self.driver.tap([(XMAX/2,YMAX/2)])
-                count = count - 1
+
             if count <=0:
                 break
 
@@ -131,7 +137,7 @@ class ContactsAndroidTests(unittest.TestCase):
             fivePointList01.append((int(x-XMAX/20),y))
         if  x+XMAX/20<XMAX:
             fivePointList01.append((int(x+XMAX/20),y))
-        if int(YMAX*15/100)<y-YMAX/20:
+        if int(YMAX*17/100)<y-YMAX/20:
             fivePointList01.append((x,int(y-YMAX/20)))
         if y+YMAX/20 < YMAX:
             fivePointList01.append((x,int(y+YMAX/20)))
@@ -147,7 +153,7 @@ class ContactsAndroidTests(unittest.TestCase):
             fivePointList02.append((int(x-XMAX/10),y))
         if  x+XMAX/10<XMAX:
             fivePointList02.append((int(x+XMAX/10),y))
-        if int(YMAX*15/100)<y-YMAX/10:
+        if int(YMAX*17/100)<y-YMAX/10:
             fivePointList02.append((x,int(y-YMAX/10)))
         if y+YMAX/10 < YMAX:
             fivePointList02.append((x,int(y+YMAX/10)))
@@ -161,15 +167,15 @@ class ContactsAndroidTests(unittest.TestCase):
             fivePointList03.append((int(x-XMAX/5),y))
         if  x+XMAX/5<XMAX:
             fivePointList03.append((int(x+XMAX/5),y))
-        if int(YMAX*15/100)<y-YMAX/5:
+        if int(YMAX*17/100)<y-YMAX/5:
             fivePointList03.append((x,int(y-YMAX/5)))
         if y+YMAX/5 < YMAX:
             fivePointList03.append((x,int(y+YMAX/5)))
 
         fivePointList04 = [(x,y)]
-        if (0 < x-XMAX/10) and (int(YMAX*15/100)<y-YMAX/10)  :
+        if (0 < x-XMAX/10) and (int(YMAX*17/100)<y-YMAX/10)  :
             fivePointList04.append((int(x-XMAX/10),int(y-YMAX/10)))
-        if  (x+XMAX/10<XMAX) and (int(YMAX*15/100)<y-YMAX/10):
+        if  (x+XMAX/10<XMAX) and (int(YMAX*17/100)<y-YMAX/10):
             fivePointList04.append((int(x+XMAX/10),int(y-YMAX/10)))
         if (x+XMAX/10 < XMAX) and (y+YMAX/10<YMAX) :
             fivePointList04.append((int(x+XMAX/10),int(y+YMAX/10)))
@@ -177,9 +183,9 @@ class ContactsAndroidTests(unittest.TestCase):
             fivePointList04.append((int(x-XMAX/10),int(y+YMAX/10)))
 
         fivePointList05 = [(x,y)]
-        if (0 < x-XMAX/5) and (int(YMAX*15/100)<y-YMAX/5)  :
+        if (0 < x-XMAX/5) and (int(YMAX*17/100)<y-YMAX/5)  :
             fivePointList05.append((int(x-XMAX/5),int(y-YMAX/5)))
-        if  (x+XMAX/5<XMAX) and (int(YMAX*15/100)<y-YMAX/5):
+        if  (x+XMAX/5<XMAX) and (int(YMAX*17/100)<y-YMAX/5):
             fivePointList05.append((int(x+XMAX/5),int(y-YMAX/5)))
         if (x+XMAX/5 < XMAX) and (y+YMAX/5<YMAX) :
             fivePointList05.append((int(x+XMAX/5),int(y+YMAX/5)))
@@ -235,13 +241,14 @@ class ContactsAndroidTests(unittest.TestCase):
 
     ]
             self.shot_screen()
-            sence = get_sence(defaultSSPath,sences=sences)
+            sence = get_sence(self.screenshotDir,sences=sences)
             if sence == SenceTanSuoFuBenFighting:
                 #探测到当前在战斗画面，则每隔3s点击下中间屏幕即可
                 sleep(3)
                 self.driver.tap([(XMAX/2,YMAX/2)])
             elif sence == "otherSence":
-                self.driver.tap([(XMAX/2,YMAX/2)])
+
+                self.driver.tap([(XMAX-1,YMAX-1)])
             elif sence == SenceVictory:
                 #探测到战斗成页面，点击下屏幕中间即可
                 sleep(3)
@@ -250,7 +257,7 @@ class ContactsAndroidTests(unittest.TestCase):
                 self.driver.tap([(XMAX/2,YMAX/2)])
                 sleep(3)
                 self.driver.tap([(XMAX/2,YMAX/2)])
-                count = count - 1
+
             elif sence == SenceVictoryDaMo:
                 #探测到领取奖励页面，点击下屏幕中间即可
                 sleep(3)
@@ -267,7 +274,7 @@ class ContactsAndroidTests(unittest.TestCase):
         #点击觉醒入口
         self.driver.tap([(int(XMAX*8/100),int(YMAX*93/100))])
         #选择任意一个麒麟
-        sleep(3)
+        sleep(4)
         if type=="huo":
             self.driver.tap([(XMAX/5,YMAX/2)])
         if type=="feng":
@@ -305,7 +312,7 @@ class ContactsAndroidTests(unittest.TestCase):
     ]
 
             self.shot_screen()
-            sence = get_sence(defaultSSPath,sences=sences)
+            sence = get_sence(self.screenshotDir,sences=sences)
             if sence == SenceTanSuoFuBenFighting:
                 #探测到当前在战斗画面，则每隔3s点击下中间屏幕即可
                 sleep(3)
@@ -320,15 +327,15 @@ class ContactsAndroidTests(unittest.TestCase):
                 self.driver.tap([(XMAX/2,YMAX/2)])
                 sleep(3)
                 self.driver.tap([(XMAX/2,YMAX/2)])
-                count = count - 1
+
             elif sence == SenceVictoryDaMo:
                 #探测到领取奖励页面，点击下屏幕中间即可
                 sleep(3)
-                self.driver.tap([(XMAX/2,YMAX/2)])
+                self.driver.tap([(XMAX/2,int(YMAX*3/4))])
                 sleep(3)
-                self.driver.tap([(XMAX/2,YMAX/2)])
+                self.driver.tap([(XMAX/2,int(YMAX*3/4))])
                 sleep(3)
-                self.driver.tap([(XMAX/2,YMAX/2)])
+                self.driver.tap([(XMAX/2,int(YMAX*3/4))])
                 count = count - 1
 
     def shot_screen_backup(self):
@@ -338,11 +345,11 @@ class ContactsAndroidTests(unittest.TestCase):
 
         img = Image.open("screenshotPre.png")
         img2 = img.transpose(Image.ROTATE_270)
-        img2.save(defaultSSPath)
+        img2.save(self.screenshotDir)
     def shot_screen(self):
         #这个函数截图出来的图片是竖屏的图片，为了保证响应速度，我们使用这个函数来配合图片识别操作的函数（也就是siftxy.py里面的函数，对应的x,y返回结果时，我们也做了相关的线性变化）
         #sleep(1)
-        self.driver.get_screenshot_as_file(defaultSSPath)
+        self.driver.get_screenshot_as_file(self.screenshotDir)
 
     def tan_suo(self,count=1,level=tanSuoLevel13Path):
         starttime = time.time()
@@ -353,6 +360,7 @@ class ContactsAndroidTests(unittest.TestCase):
         args = {'start_x':int(XMAX*9/10), 'start_y':int(YMAX/4), 'end_x':int(XMAX*9/10), 'end_y':int(YMAX*85/100), 'duration':5000}
         loggerInner.info("-----swipe")
         self.driver.swipe(**args)
+        sleep(3)
 
 
 
@@ -380,18 +388,18 @@ class ContactsAndroidTests(unittest.TestCase):
             if (timenow - starttime)> presettime:
                 break
             self.shot_screen()
-            sence = get_sence(defaultSSPath)
+            sence = get_sence(self.screenshotDir)
             loggerInner.info("------now sence is {sence}".format(sence=sence))
             if sence == SenceTanSuoFuBenXuanZe:
                 #只进行妖怪打斗标志检索，检索完了点击。如果检索不到就往右移动半屏幕(四次之后改变方向移动四次)，再次检索。
                 self.shot_screen()
-                x,y = get_x_y(defaultSSPath,SenceBossFightPic)
+                x,y = get_x_y(self.screenshotDir,SenceBossFightPic)
                 if x != "nox":
                     loggerInner.info("------find boss,at {x},{y}".format(x=x,y=y))
                     self.driver.tap([(x,y)])
 
                 self.shot_screen()
-                x,y = get_x_y(defaultSSPath,tanSuoZhunBeiPath)
+                x,y = get_x_y(self.screenshotDir,tanSuoZhunBeiPath)
                 if x != "nox":
                     loggerInner.info("------find an small demo,at {x},{y}".format(x=x,y=y))
                     fivePointList = self.get_five_point_lists(x,y)
@@ -412,7 +420,7 @@ class ContactsAndroidTests(unittest.TestCase):
                     #判断如果有boss，就打boss
                     self.shot_screen()
 
-                    x,y = get_x_y(defaultSSPath,bossJiangpinButton)
+                    x,y = get_x_y(self.screenshotDir,bossJiangpinButton)
                     if x != "nox":
                         loggerInner.info("------after boss fight ,there is some trasures,at {x},{y}".format(x=x,y=y))
                         self.driver.tap([(x,y)])
@@ -449,7 +457,7 @@ class ContactsAndroidTests(unittest.TestCase):
                 self.driver.tap([(int(XMAX*3/4),int(YMAX*7/10))])
                 sleep(6)
 
-                x,y=get_x_y(defaultSSPath,fuBenTanSuoKaiShiButton,accurate=0.1)
+                x,y=get_x_y(self.screenshotDir,fuBenTanSuoKaiShiButton,accurate=0.1)
                 if x != "nox":
                     self.driver.tap([(x,y)])
 
@@ -472,7 +480,7 @@ class ContactsAndroidTests(unittest.TestCase):
             elif sence == SenceTanSuoFuBenHomePage:
                 self.shot_screen()
                 #先判断下有没有宝箱可以领取，如果有的话不要忘记领取了
-                x,y = get_x_y(defaultSSPath,baoXiang)
+                x,y = get_x_y(self.screenshotDir,baoXiang)
                 if x != "nox":
                     self.driver.tap([(x,y)])
                     sleep(3)
@@ -513,9 +521,9 @@ class ContactsAndroidTests(unittest.TestCase):
         #点击友情点收取或者赠送，共需要赠送5个人
         count = 4
         while count >= 0:
-            self.driver.tap([(int(XMAX*35/100),int(YMAX*(35+count*13)/100))])
+            self.driver.tap([(int(XMAX*35/100),int(YMAX*(32+count*13)/100))])
             sleep(4)
-            self.driver.tap([(int(XMAX*35/100),int(YMAX*(35+count*13)/100))])
+            self.driver.tap([(int(XMAX*35/100),int(YMAX*(32+count*13)/100))])
             sleep(4)
             count = count -1
     #获取结界经验
@@ -607,7 +615,7 @@ class ContactsAndroidTests(unittest.TestCase):
                     {"sence": SenceVictoryDaMo, "path": SenceFlagVictoryDaMo},
 
                 ]
-            sence = get_sence(defaultSSPath,sences=sences)
+            sence = get_sence(self.screenshotDir,sences=sences)
             if sence == SenceTanSuoFuBenFighting:
                     #探测到当前在战斗画面，则每隔3s点击下中间屏幕即可
                     sleep(3)
@@ -657,42 +665,21 @@ class ContactsAndroidTests(unittest.TestCase):
         desired_caps = {}
         desired_caps['platformName'] = 'Android'
         desired_caps['platformVersion'] = '4.4'
-        desired_caps['deviceName'] = '127.0.0.1:52001'
+        desired_caps['deviceName'] = '127.0.0.1:62001'
         desired_caps['appPackage'] = 'com.netease.onmyoji.huawei'
         desired_caps['appActivity'] = 'com.netease.onmyoji.Launcher'
 
         self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
 
+
     def tearDown(self):
         loggerInner.info("---------------------cases execurated!!----------------------")
+        if os.path.exists(self.screenshotDir):
+            os.remove(self.screenshotDir)
         self.driver.quit()
 
 
-    #######这里是最开始的几个测试用例，后来分离到了单个用例里面去了
-    # def test_1_yu_hun(self):
-    #     loggerInner.info("------start yu hun!! ")
-    #     start2TingYuan(self.driver)
-    #     #点击探索探索
-    #     loggerInner.info("------click search button at {x},{y} ".format(x=int(XMAX*53/100),y=int(YMAX/5)))
-    #     self.driver.tap([(int(XMAX*53/100),int(YMAX/5))])
-    #     sleep(5)
-    #     self.yu_hun(count=3)
-    # def test_2_jue_xing(self):
-    #     loggerInner.info("------start jue xing !!")
-    #     start2TingYuan(self.driver)
-    #     #点击探索探索
-    #     loggerInner.info("------click search button in tingyuan at {x},{y}".format(x=int(XMAX*53/100),y=int(YMAX/5)))
-    #     self.driver.tap([(int(XMAX*53/100),int(YMAX/5))])
-    #     sleep(5)
-    #     self.jue_xing(type='shui',count=3)
-    # def test_3_tan_suo_fu_ben(self):
-    #     loggerInner.info("------start level fight tasks !!")
-    #     start2TingYuan(self.driver)
-    #     #点击探索探索
-    #     loggerInner.info("------click search button at {x},{y} ".format(x=int(XMAX*53/100),y=int(YMAX/5)))
-    #     self.driver.tap([(int(XMAX*53/100),int(YMAX/5))])
-    #     sleep(5)
-    #     self.tan_suo(count=3)
+
 
 
 

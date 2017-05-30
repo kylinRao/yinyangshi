@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
     # get_sence("prePic/testPic/test.png")
     # get_sence("prePic/testPic/SenceTanSuoFuBenFighting.png")
-    sence = get_sence(defaultSSPath)
+    sence = get_sence(r"d:\a.png")
     print sence
     # get_sence("prePic/testPic/SenceVictory.png")
     # get_sence("prePic/testPic/SenceVictoryDaMo.png")

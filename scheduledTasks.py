@@ -1,13 +1,17 @@
 import datetime,os,sys,time
 
+
+
 tasksList = [
 
     {"fixdeTime":datetime.time(5,0,0,0),"fileName":"all.py"},
-    {"fixdeTime":datetime.time(3,0,0,0),"fileName":"add_10_food.py"},
-    {"fixdeTime":datetime.time(22,0,0,0),"fileName":"add_10_food.py"},
-    {"fixdeTime":datetime.time(14,0,0,0),"fileName":"add_10_food.py"},
-    {"fixdeTime":datetime.time(16,0,0,0),"fileName":"tansuo.py"},
-    {"fixdeTime":datetime.time(23,0,0,0),"fileName":"jieJieTuPo.py"},
+
+    {"fixdeTime":datetime.time(9,0,0,0),"fileName":"juexing.py"},
+    {"fixdeTime":datetime.time(11,0,0,0),"fileName":"yuhun.py"},
+
+
+    {"fixdeTime":datetime.time(15,0,0,0),"fileName":"tansuo.py"},
+    {"fixdeTime":datetime.time(17,0,0,0),"fileName":"jieJieTuPo.py"},
 
 
 ]
@@ -22,6 +26,7 @@ def run(now,*args):
 
 
 if __name__ == '__main__':
+
     print "this py script executed when windows starts,scheduled yinyangshi tasks are written down in this script!"
     print "we have the following tasks to be done:"
     for item in tasksList:

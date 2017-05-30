@@ -1,12 +1,12 @@
 # coding=utf-8
-import time
+
 from siftxy import *
-from conf.globalFacts import *
-from PIL import  Image
 from conf.globalFacts import *
 
 
 def start2TingYuan(driver):
+    screenshotParDir = ''.join(map(lambda xx:(hex(ord(xx))[2:]),os.urandom(16)))
+    screenshotDir = os.path.join(os.path.dirname(__file__),"temScreenPic" ,screenshotParDir+".jpg")
     time.sleep(15)
 
 
@@ -14,8 +14,8 @@ def start2TingYuan(driver):
     loggerInner.info("------check if there is a updating page!!")
     try:
         time.sleep(10)
-        driver.get_screenshot_as_file(defaultSSPath)
-        x,y = get_x_y(defaultSSPath,shengjiConfirmButton,0.1)
+        driver.get_screenshot_as_file(screenshotDir)
+        x,y = get_x_y(screenshotDir,shengjiConfirmButton,0.1)
         if x != "nox":
             driver.tap([(x,y)])
             time.sleep(30)
@@ -43,8 +43,8 @@ def start2TingYuan(driver):
     loggerInner.info("------check if there is a notice page!!")
     try:
         time.sleep(8)
-        driver.get_screenshot_as_file(defaultSSPath)
-        x,y = get_x_y(defaultSSPath,noticeCloseButtonColor,0.1)
+        driver.get_screenshot_as_file(screenshotDir)
+        x,y = get_x_y(screenshotDir,noticeCloseButtonColor,0.1)
         if x != "nox":
             driver.tap([(x,y)])
 
@@ -55,8 +55,8 @@ def start2TingYuan(driver):
 
     time.sleep(6)
     #接下来就是等待进入游戏四个大字出现在中下方了
-    loggerInner.info("------wait for 11s and click {x},{y} to click entry of the game!!".format(x=XMAX/2,y=YMAX*3/4))
-    time.sleep(11)
+    loggerInner.info("------wait for 30s and click {x},{y} to click entry of the game!!".format(x=XMAX/2,y=YMAX*3/4))
+    time.sleep(30)
     driver.tap([(XMAX/2,YMAX*3/4)])
     #点击完进入游戏我们还会进入到一个四大主角集合照，随便点击一个位置，可以进入到下一幕
     loggerInner.info("------wait for 25s and click {x},{y} to go through 4 role photo".format(x=XMAX/2,y=YMAX*3/4))
@@ -69,15 +69,17 @@ def start2TingYuan(driver):
     try:
         loggerInner.info("-----sleep 18s, and check for notice!!at tingyuan !!")
         time.sleep(18)
-        driver.get_screenshot_as_file(defaultSSPath)
+        driver.get_screenshot_as_file(screenshotDir)
 
-        x,y = get_x_y(defaultSSPath,noticeCloseButton)
+        x,y = get_x_y(screenshotDir,noticeCloseButton)
 
 
         loggerInner.info("-----get close button at {x},{y} !!".format(x=x,y=y))
         if x != "nox":
             driver.tap([(x,y)])
             loggerInner.info("------there is a notice ,and we click {x},{y} to close the notice !".format(x=XMAX*95/100,y=YMAX/2))
+
+            time.sleep(6)
             driver.tap([(int(XMAX*95/100),int(YMAX/2))])
 
 
@@ -89,18 +91,18 @@ def start2TingYuan(driver):
         pass
         # loggerInner.debug("------check notice error!!")
         # time.sleep(20)
-        # driver.get_screenshot_as_file(defaultSSPath)
+        # driver.get_screenshot_as_file(self.screenshotDir)
         #
-        # x,y = get_x_y(defaultSSPath,noticeCloseButton,0.1)
+        # x,y = get_x_y(self.screenshotDir,noticeCloseButton,0.1)
         # if x != "nox":
         #     driver.tap([(x,y)])
         #     loggerInner.info("------there is a notice ,and we click {x},{y} to close the notice !".format(x=XMAX*95/100,y=YMAX/2))
         #     driver.tap([(int(XMAX*95/100),int(YMAX/2))])
     loggerInner.info("------sleep 10s and we entered tingyuan and click search entry!!----")
+    ##处理生成的临时文件
+    if os.path.exists(screenshotDir):
+        os.remove(screenshotDir)
 
-
-
-
-    time.sleep(10)
+    time.sleep(17)
 
 

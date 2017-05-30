@@ -6,7 +6,7 @@ PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
 
-class tansuoSigleTests(ContactsAndroidTests):
+class sigleTests(ContactsAndroidTests):
     def test_4_jie_jie_tu_po(self):
         loggerInner.info("------start level fight tasks !!")
         start2TingYuan(self.driver)
@@ -16,6 +16,6 @@ class tansuoSigleTests(ContactsAndroidTests):
         sleep(15)
         self.jie_jie_tu_po()
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(tansuoSigleTests)
+    suite = unittest.TestLoader().loadTestsFromTestCase(sigleTests)
     unittest.TextTestRunner(verbosity=2).run(suite)
 

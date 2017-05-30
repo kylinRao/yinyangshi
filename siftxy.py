@@ -70,7 +70,7 @@ def get_x_y(bigTuPath,smallTuPath,accurate=0.2):
 
 if __name__ == '__main__':
     print time.time()
-    #x,y = get_x_y(defaultSSPath,tanSuoLevel10Path)
-    x,y=get_x_y(defaultSSPath,noticeCloseButton,0.1)
+    #x,y = get_x_y(self.screenshotDir,tanSuoLevel10Path)
+    x,y=get_x_y('',noticeCloseButton,0.1)
 
     print x,y

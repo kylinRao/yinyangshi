@@ -6,7 +6,7 @@ PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
 
-class juexingTests(ContactsAndroidTests):
+class sigleTests(ContactsAndroidTests):
     def test_2_jue_xing(self):
 
         count = 3
@@ -33,6 +33,6 @@ class juexingTests(ContactsAndroidTests):
         sleep(5)
         self.jue_xing(type=type,count=count)
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(juexingTests)
+    suite = unittest.TestLoader().loadTestsFromTestCase(sigleTests)
     unittest.TextTestRunner(verbosity=2).run(suite)
 
