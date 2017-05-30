@@ -1,4 +1,5 @@
-L:
-cd L:\appAutoScripts
-python all.py
-sleep 36000
+D:
+cd D:\projects\github\yinyangshi
+start "" scheduledTasks.py
+start "" scheduledTasks_5723.py
+sleep 10

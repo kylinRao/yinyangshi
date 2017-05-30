@@ -1,0 +1,2 @@
+start "" "D:\Program Files\Appium\Appium\node.exe" "D:\Program Files\Appium\Appium\node_modules\appium\bin\appium.js" --port 4723
+start "" "D:\Program Files\Appium\Appium\node.exe" "D:\Program Files\Appium\Appium\node_modules\appium\bin\appium.js" --port 5723
